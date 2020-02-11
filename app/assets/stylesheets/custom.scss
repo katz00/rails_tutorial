@@ -1,1 +1,79 @@
 @import "bootstrap";
+
+/*universal*/
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+/*typography*/
+
+h1,h2,h3,h4,h5,h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  font-weight: normal;
+  margin-bottom: 30px;
+  color: #777;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+/*header*/
+
+#logo {
+  font-size: 1.7em;
+  text-transform: uppercase;
+  letter-spacing: -1;
+  padding: 9px;
+  font-weight: bold;
+  &:hover {
+    text-decoration:none;
+  }
+}
+
+header a {
+  color: #fff;
+}
+
+/*ナビゲーション*/
+
+.nav li {
+  margin-right: 10px;
+}
+
+/*footer*/
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  background-color: aliceblue;
+}
+
+footer a {
+  color: #555;
+  &:hover {
+    color: #222;
+  }
+}
+
