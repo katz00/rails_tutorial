@@ -6,4 +6,9 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should delete logout" do
+    delete logout_path
+    assert_not is_logged_in?
+  end
+
 end
