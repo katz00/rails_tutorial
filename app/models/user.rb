@@ -14,8 +14,8 @@ class User < ApplicationRecord
   validates :email, uniqueness: {case_sensitive: false}
 
   has_secure_password
-  validates :password, length:{ minimum: 6}
-  validates :password, presence: true
+  validates :password, length:{ minimum: 6}, allow_nil: true #ユーザー更新の時限定でnilでも引っかからない
+  validates :password, presence: true, allow_nil: true #ユーザー更新の時限定でnilでも引っかからない
 
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
