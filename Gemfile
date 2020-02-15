@@ -19,7 +19,7 @@ gem 'bcrypt', '3.1.13'
 
 group :development, :test do
   gem 'sqlite3', '1.4.0'
-  gem 'byebug',  '9.0.6', platform: :mri
+  gem 'byebug',  '11.0.0', platforms: [:mri, :mingw, :x64_mingw]
 end
 
 group :development do

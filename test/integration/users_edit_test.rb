@@ -12,7 +12,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     #でもだったら編集フォームにパスワードいらなくね？
   end
 
-  test "update with invalid information" do
+  test "unsuccessful edit" do
     log_in_as(@user) #ログインしてないと認可で弾かれてテストにならない
     get edit_user_path(@user)
     assert_template 'users/edit'
@@ -22,10 +22,10 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_select "div.alert", "The form contains 5 errors"
   end
 
-  test "update with valid information" do
-    log_in_as(@user) ##ログインしてないと認可で弾かれてテストにならない
+  test "successful edit with friendly forwarding" do
     get edit_user_path(@user)
-    assert_template 'users/edit'
+    log_in_as(@user)
+    assert_redirected_to edit_user_url(@user)
     name = "Foo Bar"
     email = "foo@bar.com"
     #更新するために使った値と更新後の値を下で比較検証するために変数に入れておく

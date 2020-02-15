@@ -42,12 +42,15 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
-    def logged_in_user
+    def logged_in_user #ログインしてこいdef must_loginでもいいかな
       unless logged_in?
         #def logged_in?
           #!current_user.nil?
         #end
-      flash[:danger] = "ログインしてください"
+      store_location  #def store_location(default) #store意味:蓄える.sessionsヘルパーで定義
+                        #session[:forwarding_url] = request.original_url if request.get?
+                      #end フレンドリーフォワーディングのための布石,ログインしないで行こうとしたurlを覚えさせてからリダイレクトさせる
+      flash[:danger] = "Please log in!"
       redirect_to login_url
       end
     end
