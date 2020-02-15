@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-
+  
   end
 
   def create
@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       #下の一行は上のコメントと等価
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       flash[:seccess] ="ログインしました"
-      redirect_to user_url(user)
+      redirect_friendly_url_or_default(user)
     else
       flash.now[:danger] = "invalid email/password combination"
       render 'sessions/new'

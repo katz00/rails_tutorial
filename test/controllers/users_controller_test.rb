@@ -32,4 +32,5 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
                                               email: @user.email } } 
     assert_redirected_to root_url
   end
+
 end
