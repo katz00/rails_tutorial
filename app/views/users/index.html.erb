@@ -1,0 +1,17 @@
+<% provide(:title, "All users")%>
+
+<div class="container yp-4">
+  <h1>All users</h1>
+  <div class="row">
+    <div class="col-5 offset-left">
+      <ul class="list-group list-group-flush users">
+        <% @users.each do |user|%> <!--|@user|では無い。テンプレート変数はアクションとビューとでのデータの橋渡し役、アクションで@userなど定義していないのでエラーになる。ただ格納する変数名なのでなんでもいいがuserがわかりすいのでuser-->
+          <li class="list-group-item">
+            <%= gravatar_for(user, size: 50)%>
+            <%= link_to user.name, user_path(user)%>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
