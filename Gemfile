@@ -16,6 +16,7 @@ gem 'jbuilder',     '2.7.0'
 gem 'bootstrap', '>= 4.3.1'
 gem 'bcrypt', '3.1.13'
 gem 'faker', '1.9.1'
+gem 'kaminari'
 
 
 group :development, :test do
