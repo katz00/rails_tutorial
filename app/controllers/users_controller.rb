@@ -11,7 +11,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      UserMailer.account_activation(@user).deliver_now
+      #UserMailer.account_activation(@user).deliver_now
+      #上のコードをuserモデルでメソッドにしたそれが下。上下で等価。
+      @user.send_activation_email
       flash[:info] = "アカウントを有効にするためにメールをチェックしてください"
       redirect_to root_url
     else
@@ -25,6 +27,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    redirect_to root_url and return unless @user.activated?
   end
 
   def update
@@ -38,7 +41,9 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.page(params[:page]).per(30)
+    #@users = User.page(params[:page]).per(30)
+    #有効化されたユーザーのみ表示するように変更,SQLのwhereで条件を与える
+    @users = User.where(activated: true).page(params[:page]).per(30)
   end
 
   def destroy
