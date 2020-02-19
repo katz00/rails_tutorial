@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
+      if user.activated?
       log_in(user) #session[:user_id] = user.id
       #if params[:session][:remember_me] == '1'
       #  remember(user)
@@ -16,6 +17,12 @@ class SessionsController < ApplicationController
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       flash[:seccess] ="ログインしました"
       redirect_friendly_url_or_default(user)
+      else
+        message = "アカウントが有効化されていません"
+        message += "有効化のリンクがあるメールをチェックしてください"
+        flash[:warning] = message
+        redirect_to root_url
+      end
     else
       flash.now[:danger] = "invalid email/password combination"
       render 'sessions/new'

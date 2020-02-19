@@ -3,7 +3,7 @@ require 'test_helper'
 class UsersSignupTest < ActionDispatch::IntegrationTest
   
 
-  test "create account with invalid information" do
+  test "invalid signup with invalid information" do
     get signup_path
     assert_no_difference 'User.count' do
       post signup_path, params:{user:{name:"", email:"",
@@ -23,7 +23,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_template 'users/show'
     assert is_logged_in?
-    assert_not flash.empty?
   end
 
 end
