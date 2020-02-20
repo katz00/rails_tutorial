@@ -5,10 +5,8 @@ class PasswordResetsController < ApplicationController
   def create
     @user = User.find_by(email: params[:password_reset][:email])
     if @user
-      reset_token = User.new_token
-      @user.update_attribute(:reset_digest, User.digest(reset_token))
-      @user.update_attribute(:reset_sent_at, Time.zone.now)
-      UserMailer.password_reset(@user).deliver_now
+      @user.create_reset_digest_to_users #user.rbでメソッド化してある
+      @user.send_reset_email #user.rbでメソッド化してある
       flash[:info] = "パスワードのリセット手順を記載したメールを送信しました"
       redirect_to root_url
     else
