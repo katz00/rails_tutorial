@@ -1,2 +1,20 @@
-<h1>PasswordResets#edit</h1>
-<p>Find me in app/views/password_resets/edit.html.erb</p>
+<% provide(:title, "Reset password")%>
+
+<div class="container py-4">
+  <h1>Reset password</h1>
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+    <%= form_for(@user, url: passwrod_reset_path(params[:id])) do |f|%>
+      <%= render 'shared/error_messages'%>
+      
+      <%= f.label :passwrod%>
+      <%= f.password_field :password, class:'form-control'%>
+
+      <%= f.label :password_confirmation%>
+      <%= f.password_field :password, class:'form-control'%>
+
+      <%= f.submit "Update password", class:'btn btn-primary'%>
+    <% end %>
+    </div>
+  </div>
+</div>
