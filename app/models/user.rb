@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   
-  attr_accessor :remember_token, :activation_token #仮想の属性(仮想のカラム)
+  attr_accessor :remember_token, :activation_token, :reset_token #仮想の属性(仮想のカラム)
 
   before_save :downcase_email
   before_create :create_activation_digest
