@@ -30,6 +30,7 @@ before_action :check_expiration, only: [:edit, :update]
       render 'password_resets/edit'
     elsif @user.update_attributes(user_params)
       log_in(@user)
+      @user.update_attribute(:reset_digest, nil) #パスワードの再設定に成功したらダイジェストをnil。残ってると他の人が再設定リンクを踏めばまた再設定ができてしまう。
       flash[:success] = "パスワードの再設定が成功しました"
       redirect_to user_url(@user)
     else
