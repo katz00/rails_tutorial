@@ -51,7 +51,7 @@ class User < ApplicationRecord
     #self.update_attribute(:activated, true)
     #self.update_attribute(:activated_at, Time.zone.now)
     #上二行のコードだとDBに二回アクセスしているが一回にできるそれが下
-    update_columns(activated: true, activated_at: Time.zone.now)
+    self.update_columns(activated: true, activated_at: Time.zone.now)
   end
 
   def send_activation_email
@@ -62,7 +62,7 @@ class User < ApplicationRecord
     self.reset_token = User.new_token
     #self.update_attribute(:reset_digest, User.digest(reset_token))
     #self.update_attribute(:reset_sent_at, Time.zone.now)
-    update_columns(reset_digest: User.digest(reset_token),
+    self.update_columns(reset_digest: User.digest(reset_token),
                     reset_sent_at: Time.zone.now)
   end
 
