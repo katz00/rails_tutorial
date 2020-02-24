@@ -60,8 +60,10 @@ class User < ApplicationRecord
 
   def create_reset_digest_to_users
     self.reset_token = User.new_token
-    self.update_attribute(:reset_digest, User.digest(reset_token))
-    self.update_attribute(:reset_sent_at, Time.zone.now)
+    #self.update_attribute(:reset_digest, User.digest(reset_token))
+    #self.update_attribute(:reset_sent_at, Time.zone.now)
+    update_columns(reset_digest: User.digest(reset_token),
+                    reset_sent_at: Time.zone.now)
   end
 
   def send_reset_email
