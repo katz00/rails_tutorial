@@ -1,0 +1,11 @@
+<% @microposts.each do |micropost|%> 
+  <li class="list-group-item text-left" id="micropost-<%= micropost.id%>">
+    <!--マイクロポストに紐づいたユーザーのgravatar画像をリンクとして表示-->
+    <%= link_to gravatar_for(micropost.user, size: 50), user_path(micropost.user)%>
+    <span class="user"><%= link_to micropost.user.name, user_path(micropost.user)%></span>
+    <span class="content"><%= micropost.content%></span>
+    <span class="timestamp">
+    Postage <%= time_ago_in_words(micropost.created_at)%> ago.
+    </span>
+  </li>
+<% end %>
