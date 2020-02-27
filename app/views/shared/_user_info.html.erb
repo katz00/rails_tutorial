@@ -1,0 +1,6 @@
+<%= link_to gravatar_for(current_user, size: 50), user_path(current_user)%> 
+<!--login済みで表示されるviewなのでcurrent_userメソッドでログイン中のユーザーレコードを@current_userに代入する
+current_userメソッドのところは実際には@currenu_user変数で評価されている-->
+<h1><%= current_user.name%></h1>
+<span><%= link_to "view profile", user_path(current_user)%></span>
+<span><%= pluralize(current_user.microposts.count, "micropost")%></span>
