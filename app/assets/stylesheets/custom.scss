@@ -154,3 +154,21 @@ input {
 .feed-title {
   padding-bottom: 0.5em;
 }
+
+.feed {
+  .user {
+    display: block;
+  }
+  .content { 
+    display: block;
+  }
+  .timestamp {
+    color: #777;
+    display: block;
+  }
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+}
