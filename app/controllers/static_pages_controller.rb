@@ -16,6 +16,7 @@ class StaticPagesController < ApplicationController
       #    end
       #  end
       #end
+      @feed_items = current_user.feed.page(params[:page]).per(20)
     end
   end
 
