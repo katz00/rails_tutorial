@@ -75,7 +75,11 @@ class User < ApplicationRecord
     self.reset_sent_at < 2.hours.ago #送信した時間が現時刻より2時間前
   end
 
-  
+  def feed
+    Micropost.where('user_id=?', id)
+    #feedメソッドのレシーバのidの値をプレイスホルダー経由でuser_idに渡してその値でMicropostオブジェクトを検索
+  end
+
   private
     def downcase_email
       email.downcase!
