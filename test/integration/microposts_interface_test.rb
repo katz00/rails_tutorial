@@ -10,6 +10,7 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get root_path
     assert_select '.page-link'
+    assert_select 'input[type= file]'
     #無効なマイクロポストを送信
     assert_no_difference 'Micropost.count' do
       post microposts_path, params:{micropost:{content:""}}
@@ -17,8 +18,11 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
     assert_select "div.error_explanation"
     #有効なマイクロポスト
     content = "This a test micropost"
+    picture = fixture_file_upload('test/fixtures/rails.png', 'image/png')
+      #fixuture_file_uploadとは,fixutureで定義されたファイルをアップロードするメソッド
     assert_difference 'Micropost.count', 1 do
-      post microposts_path, params:{micropost:{content: content}}
+      post microposts_path, params:{micropost:{content: content,
+                                      picture: picture}}
     end
     assert_redirected_to root_url
     follow_redirect!
