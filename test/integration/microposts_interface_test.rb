@@ -9,7 +9,7 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
   test "micropost interface" do
     log_in_as(@user)
     get root_path
-    #assert_select '.paginate'
+    assert_select '.page-link'
     #無効なマイクロポストを送信
     assert_no_difference 'Micropost.count' do
       post microposts_path, params:{micropost:{content:""}}
