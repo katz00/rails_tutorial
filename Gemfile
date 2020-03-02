@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails',        '5.2.4'
-gem 'puma',         '3.12.2'
+gem 'puma',         '3.12.3'
 gem 'sass-rails',   '5.0.6'
 gem 'uglifier',     '3.2.0'
 gem 'coffee-rails', '4.2.2'
@@ -17,6 +17,8 @@ gem 'bootstrap', '>= 4.3.1'
 gem 'bcrypt', '3.1.13'
 gem 'faker', '1.9.1'
 gem 'kaminari', '1.2.0'
+gem 'carrierwave', '2.0.1'
+gem 'mini_magick', '4.9.5'
 
 
 group :development, :test do
@@ -41,6 +43,7 @@ end
 
 group :production do
   gem 'pg', '0.20.0'
+  gem 'fog', '2.2.0'
 end
 
 # Windows環境ではtzinfo-dataというgemを含める必要があります
