@@ -3,5 +3,11 @@
   <div class="form">
     <%= f.text_area :content, class: "form-control", placeholder: "Compose new micropost..."%>
   </div>
+  <div class="custom-file mt-3">
+    <%= f.file_field :picture, class:"custom-file-input"%>
+    <%= f.label :picture, class:"custom-file-label"%>
+  </div>
+
   <%= f.submit "Post", class: "btn btn-primary w-25 mt-2"%>
+
 <% end %>
