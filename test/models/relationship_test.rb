@@ -6,7 +6,7 @@ class RelationshipTest < ActiveSupport::TestCase
     @user = users(:michael)
     @other_user = users(:archer)
     @relationship = @user.active_relationships.build(follower_id: @user.id,
-                                      followed_id: @other_user.id)
+                                      following_id: @other_user.id)
   end
 
   test "should be valid" do
@@ -18,8 +18,8 @@ class RelationshipTest < ActiveSupport::TestCase
     assert_not @relationship.valid?
   end
 
-  test "should require a followed_id" do
-    @relationship.followed_id = nil
+  test "should require a following_id" do
+    @relationship.following_id = nil
     assert_not @relationship.valid?
   end
 end

@@ -1,8 +1,11 @@
 class User < ApplicationRecord
   has_many :microposts, dependent: :destroy
 
-  has_many :active_relationships, class_name: "Relationship",
-                  foreign_key: "follower_id", dependent: :destroy
+  =begin(follower)=end has_many :active_relationships, class_name: "Relationship", foreign_key: "follower", dependent: :destroy
+  =begin(follower)=end has_many :followings, through: :active_relationships, source: :followings
+
+  =begin(following)=end has_many :passive_relationships, class_name: "Relationship", foreign_key: "following", dependent: :destroy
+  =begin(following)=end has_many :followers, through: :passive_relationsips, source: :follower
 
   attr_accessor :remember_token, :activation_token, :reset_token #仮想の属性(仮想のカラム)
 
