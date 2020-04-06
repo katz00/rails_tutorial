@@ -1,6 +1,6 @@
 <% @user ||= current_user %> <!--プロフィールページでも使うため現在のユーザーを取得しておく-->
 <div class="stats">
-  <a href="<%= followings_user_path(@user) %>">
+  <a href="<%= followings_user_path(@user) %>"> <!--followingsとfollowsはRESTfulなインターフェイスではないのでビューヘルパーは使えないのでaタグでリンクを貼る-->
     <strong id="followings" class="stats">
       <%= @user.followings.count %>
     </strong>
