@@ -2,11 +2,13 @@
 
 /*universal*/
 
-
 textarea {
   resize: vertical;
 }
 
+ul {
+  list-style: none;
+}
 /*typography*/
 
 h1,h2,h3,h4,h5,h6 {
@@ -125,6 +127,26 @@ aside {
   strong {
     display: block;
   }
+}
+
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+  .gravatar {
+    margin: 1px 1px;
+  }
+  a {
+    padding: 0;
+  }
+}
+
+.users_follow {
+  padding: 0;
+}
+.users_follow li {
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid gray;
 }
 
 /*forms*/
