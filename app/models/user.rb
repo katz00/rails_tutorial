@@ -84,8 +84,8 @@ class User < ApplicationRecord
   end
 
   def feed
-    Micropost.where('user_id=?', id)
-    #feedメソッドのレシーバのidの値をプレイスホルダー経由でuser_idに渡してその値でMicropostオブジェクトを検索
+    Micropost.where( "user_id IN (:following_ids) OR user_id = :user_id",
+                following_ids: following_ids, user_id: id)
   end
 
   def follow(other_user)
