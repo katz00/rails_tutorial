@@ -100,11 +100,11 @@ class UserTest < ActiveSupport::TestCase
 
   test "feed should have the right posts" do
     michael = users(:michael)
-    archere = users(:archer)
+    archer = users(:archer)
     lana = users(:lana)
     #フォローしているユーザーのポストがフィードに含まれているかを確認
-    lana.microposts.each do |post_followings|
-      assert michael.feed.include?(post_followings)
+    lana.microposts.each do |post_following|
+      assert michael.feed.include?(post_following)
     end
     #自分自身のポストを確認
     michael.microposts.each do |post_self|
