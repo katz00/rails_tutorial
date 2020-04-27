@@ -97,4 +97,22 @@ class UserTest < ActiveSupport::TestCase
     michael.unfollow(archer)
     assert_not michael.followings?(archer)
   end
+
+  test "feed should have the right posts" do
+    michael = users(:michael)
+    archere = users(:archer)
+    lana = users(:lana)
+    #フォローしているユーザーのポストがフィードに含まれているかを確認
+    lana.microposts.each do |post_followings|
+      assert michael.feed.include?(post_followings)
+    end
+    #自分自身のポストを確認
+    michael.microposts.each do |post_self|
+      assert michael.feed.include?(post_self)
+    end
+    #フォローしていないユーザーのポストがフィードに含まれていないことを確認
+    archer.microposts.each do |post_unfollowing|
+      assert_not michael.feed.include?(post_unfollowing)
+    end
+  end
 end
