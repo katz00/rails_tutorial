@@ -4,7 +4,7 @@
   <h1>Log in</h1>
     <div class="row">
       <div class="col-md-6 offset-md-3"> <!--bootstrap4でのoffsetの書き方-->
-        <%= form_for(:session, url: login_path) do |f| %>
+        <%= form_with(scope: :session, url: login_path, method: :post, local: true) do |f| %>
 
           <%= f.label :email%>
           <%= f.email_field :email, class:"form-control"%>
